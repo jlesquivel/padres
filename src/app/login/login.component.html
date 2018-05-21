@@ -1,0 +1,27 @@
+<div class="container">
+  <h5>Ingresar al Sistema</h5>
+  <form [formGroup]="form" (ngSubmit)="login()" class="col s12" name="registration">
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input  id="email" type="email" formControlName="email"
+               autocomplete="username" class="validate" required="" aria-required="true">
+        <label for="email" data-error="Formato: cuenta@gmail.com">Correo</label>
+      </div>
+
+      <div class="input-field col s12">
+        <input id="password" type="password" formControlName="password"
+              autocomplete="current-password" class="validate" required>
+        <label for="password">Contraseña</label>
+      </div>
+    </div>
+
+    <div class="center-btn">
+      <button class="btn waves-effect waves-light" type="submit" name="action">
+        Ingresar
+        <i class="material-icons right">send</i>
+      </button>
+    </div>
+
+  </form>
+</div>

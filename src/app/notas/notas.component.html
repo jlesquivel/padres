@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="fixed-action-btn">
+
+    <a class="btn-floating btn-large waves-effect waves-light green" (click)="openModal()">
+      <i class="material-icons">add</i>
+    </a>
+
+  </div>
+  <ul class="collection">
+    <a class="collection-item avatar" *ngFor="let item of listas" (click)="ListaCtr(item)">
+      <img src="" alt="" class="circle">
+      <i class=" material-icons circle ">list</i>
+      <span class="title">{{ item.nombre | uppercase}} </span>
+      <p>Grupo :   {{item.nivel}} - {{item.grupo }}    <br>
+        Estado :  {{item.estado}}
+      </p>
+      <a class="secondary-content" (click)="ListaCtr(item)">
+        <i class="material-icons ">mode_edit</i>
+      </a>
+    </a>
+  </ul>
+
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer" materialize="modal" 
+  [materializeParams]="[{dismissible: false, endingTop:'5%'}]" [materializeActions]="modalActions">
+    <div class="modal-content">
+
+      <!--Formulario -->
+      <form novalidate (ngSubmit)="f.form.valid && onSubmit()" 
+          #f="ngForm" class="col s12" name="registration">
+
+          <div class="row">
+              <div class="input-field col s6">
+                <input disabled value="2018" id="first_name" type="text" class="validate center-align">
+                <label for="first_name">Año</label>
+              </div>
+              <div class="input-field col s6">
+                <input disabled  value="1" id="last_name" type="text" class="validate center-align">
+                <label for="last_name">Periodo</label>
+              </div>
+            </div>
+
+            <div class="row">
+        <button class="btn-large waves-effect waves-light" 
+            type="submit" name="action">Cargar Notas
+        </button>
+
+        <p></p>
+        <p><br></p>
+        <button class="btn-large waves-effect waves-light" 
+            type="submit" name="action">Archivo Excel
+        </button>
+  
+        <p></p>
+        <div class="row">
+          El archivo excel se envía al correo electrónico registrado
+        </div>
+
+      </div>
+
+
+      </form>
+      <!--fin del form-->
+
+
+    </div>
+    <div class="modal-footer">
+      <a class="waves-effect waves-teal btn-flat left-align" (click)="closeModal()">cerrar</a>
+    </div>
+
+  </div>

@@ -1,0 +1,65 @@
+<div class="container">
+   <h5><b>Listas control</b></h5>
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large waves-effect waves-light green" (click)="openModal()"><i class="material-icons">add</i></a>
+  </div>
+
+  <ul class="collection">
+    <a class="collection-item avatar" *ngFor="let item of listas" (click)="ListaCtr(item)">
+      <img src="" alt="" class="circle">
+      <i class=" material-icons circle ">list</i>
+      <span class="title">{{ item.nombre | uppercase}}</span>
+      <p>GRUPO : {{item.grupo }} <br> {{item.descrip}}
+      </p>
+      <a class="secondary-content" (click)="ListaCtr(item)"><i class="material-icons ">mode_edit</i></a>
+    </a>
+  </ul>
+</div>
+<!--container-->
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal modal-fixed-footer" 
+  materialize="modal" [materializeParams]="[{dismissible: false, startingTop:'4%', endingTop:'2%'}]" 
+  [materializeActions]="modalActions">
+  <div class="modal-content">
+
+    <!--Formulario -->
+    <form novalidate [formGroup]="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" class="col s12" name="registration">
+
+
+      <div class="input-field col s12">
+        <select [(ngModel)]="olista.grupo" name="selectedOption" materialize="material_select" 
+            [materializeSelectOptions]="selectOptions"
+          formControlName="grupo">
+          <option value="" disabled selected>Seleccione el grupo</option>
+          <option *ngFor="let option of selectOptions" [value]="option.grupo">{{option.grupo}}</option>
+          </select>
+        <label>Grupo</label>
+      </div>
+
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input [(ngModel)]="olista.nombre" id="nombre" type="text" formControlName="nombre" class="validate" minlength="4" >
+          <label for="nombre" data-error="Nombre usado">Nombre de la Lista</label>
+        </div>
+
+        <div class="input-field col s12">
+          <input [(ngModel)]="olista.descrip" id="descripcion" type="text" formControlName="descripcion"  class="validate" required="" aria-required="true" >        
+          <label for="descripcion">Descripción</label>
+        </div>
+      </div>         
+    
+      <button class="btn waves-effect waves-light" type="submit" name="action">Crear Lista</button>
+    
+    </form>
+    <!--fin del form-->
+
+
+  </div>
+  <div class="modal-footer">
+    <a class="waves-effect waves-teal btn-flat left-align" (click)="closeModal()">cerrar</a>
+  </div>
+
+</div>
+<!--fin del modal-->

@@ -1,0 +1,1 @@
+{"version":3,"file":"boleta.component.js","sourceRoot":"","sources":["boleta.component.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,qBAAgC,eAAe,CAAC,CAAA;AAOhD;IAEE;IACA,CAAC;IAED,kCAAQ,GAAR;IACA,CAAC;IAXH;QAAC,gBAAS,CAAC;YACT,QAAQ,EAAE,YAAY;YACtB,WAAW,EAAE,yBAAyB;YACtC,SAAS,EAAE,CAAC,wBAAwB,CAAC;SACtC,CAAC;;uBAAA;IASF,sBAAC;AAAD,CAAC,AARD,IAQC;AARY,uBAAe,kBAQ3B,CAAA"}

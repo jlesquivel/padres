@@ -1,0 +1,119 @@
+<div class="row" *ngIf="_cargandoDatos">
+  <div class="center-align">
+      <br/>
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  <br/>
+  <h4> Cargando </h4>
+  </div>
+</div>
+
+<!--Muestra error si el servidor no conecta-->
+<div *ngIf="_errorServidor" class="center-align">
+    <br/>
+    <h1> <i class=" material-icons circle ">sync_disabled</i>  </h1>
+  <h4> Sin conexión</h4>
+</div>
+
+<!--Si hay datos lista la informacion -->
+<div class="row" *ngIf="_hayDatos">
+
+  <div class="col s12">
+    PROF: <b> {{nombre}}</b>
+  </div>
+  <BR>
+  <div class="col s4">
+    Grupo:<br>
+    <b>{{ title }}</b>
+  </div>
+  <div class="col s4">
+    Fecha:<br>
+    <b>{{ fecha }}</b>
+  </div>
+  <div class="col s4">
+    Lección:<br>
+    <b>{{ leccion }}</b>
+  </div>
+
+  <ul class="collection">
+    <li class="collection-item avatar" *ngFor="let estud of lista;let i = index">
+      <!--<img src="" alt="" class="circle">-->
+      <i class=" material-icons circle ">perm_identity</i>
+      <span class="title"> {{i+1}}) {{ estud.nombre }} </span>
+      <p>carnet: {{ estud.carnet }}
+        <!-- <br> {{ estud.id}} -->
+      </p>
+
+      <div *ngIf="estud.ausencia ==='B' || estud.ausencia === null">
+        <a class=" secondary-content " (click)="openModal(estud)">
+        <i class="icon-opciones grey-text"></i></a>
+      </div>
+
+      <div *ngIf="estud.ausencia === 'A'">
+        <a class="secondary-content " (click)="openModal(estud)">
+        <i class="icon-ausente orange-text "></i></a>
+      </div>
+
+      <div *ngIf="estud.ausencia === 'T'">
+        <a class="secondary-content " (click)="openModal(estud)">
+        <i class="icon-tarde orange-text "></i></a>
+      </div>
+
+      <div *ngIf="estud.ausencia === 'E'">
+        <a class="secondary-content " (click)="openModal(estud)">
+        <i class="icon-escapado red-text "></i></a>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+<!-- Modal Structure -->
+<div id="modal" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]"
+       [materializeActions]="modalActions">
+
+  <div class="modal-content">
+
+    <h5> {{seleccionado}} </h5>
+
+    <div class="collection">
+      <a class=" collection-item modal-action modal-close black-text" (click)="cambiaEstado('A')">
+        <i class=" icon-ausente orange-text text-lighten-2"></i>
+        <span class="title center-align"> AUSENTE</span>
+      </a>
+
+      <a class=" collection-item  modal-action modal-close black-text " (click)="cambiaEstado('T')">
+        <i class=" icon-tarde orange-text text-darken-3"></i>
+        <span class="title center-align"> TARDE</span>
+      </a>
+
+      <a class="collection-item modal-action modal-close  black-text" (click)="cambiaEstado('E')">
+        <i class=" icon-escapado red-text text-darken-2"></i>
+        <span class="title center-align"> ESCAPADO</span>
+      </a>
+
+      <a class="collection-item modal-action modal-close  black-text" (click)="cambiaEstado('B')">
+        <i class=" icon-opciones black-text text-darken-2"></i>
+        <span class="title center-align"> Borrar Ausencia</span>
+      </a>
+
+    </div>
+
+    <div class="modal-footer">
+      <a class="waves-effect waves-light btn" (click)="closeModal()">Cerrar</a>
+    </div>
+
+  </div>
+</div>
+<!--fin del modal-->

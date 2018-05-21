@@ -1,0 +1,8 @@
+@import '~materialize-css/sass/components/_color.scss';
+$roboto-font-path: "~materialize-css/dist/fonts/roboto/";
+
+$colorBase : "indigo";
+$primary-color: color( $colorBase, "base");
+$secondary-color: color( $colorBase, "base") !default;
+
+@import "~materialize-css/sass/materialize.scss";

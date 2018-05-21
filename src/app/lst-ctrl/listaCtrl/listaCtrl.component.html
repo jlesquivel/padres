@@ -1,0 +1,32 @@
+<div class="container" >
+<h5> <b>{{this.lista | uppercase }} </b> </h5>
+  <ul class="collection">
+   
+    <li class="collection-item " *ngFor="let estud of listaClase; let i = index">
+
+      <div class="row">
+        <div class="col s8">
+          {{i+1}}) {{ estud.nombre }}
+          <br> carnet: {{ estud.carnet }}
+        </div>
+        <div class="col s1">
+          <input type="checkbox" id="selec{{i}}" [(ngModel)]="estud.selec" />
+          <label for="selec{{i}}"></label>
+          <!--utilizar este ejemplo para modificar arreglo de datos-->
+          <!-- <input type="text" [(ngModel)]="values[0]"> => {{values[0]}}-->
+        </div>
+        <div class="input-field col s3">
+          <input [(ngModel)]="estud.nota" id="input{{i}}" type="text" class="validate" >
+          <label for="input{{i}}">Nota</label>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+  <p><br/></p>
+  <a class="waves-effect waves-light btn"><i class="material-icons left">import_export</i>Exportar</a>
+  <a class="waves-effect waves-light btn red" (click)="eliminar()">Eliminar</a>
+  <p><br/></p>
+  <p><br/></p>
+</div>
+<!--container-->

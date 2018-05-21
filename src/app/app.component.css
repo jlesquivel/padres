@@ -1,0 +1,27 @@
+.navbar-fixed {
+   height: 110px;
+   min-height: 115px;
+}
+
+.side-nav {
+  width: 230px;
+}
+
+.brand-logo{
+  font-size: 1.5em;
+}
+
+.body-cover {
+  width: 100%;
+  z-index: 0;
+  position: fixed;
+  height: 100%;
+}
+
+
+.background {
+  background: linear-gradient(to bottom right, #1a237e, #3f51b5   );
+};
+
+
+

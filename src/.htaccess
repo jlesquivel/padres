@@ -1,0 +1,13 @@
+RewriteEngine On
+
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+RewriteRule ^ index.html
+
+<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|webp)$">
+Header set Cache-Control "max-age=604800, public"
+</FilesMatch>
